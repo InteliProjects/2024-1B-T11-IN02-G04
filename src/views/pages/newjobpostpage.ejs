@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="/styles/jobfeed.css" />
+  <style>
+    .back-button {
+      position: absolute;
+      top: 20px;
+      left: 10px;
+      cursor: pointer;
+    }
+    .back-button img {
+      width: 24px; /* Ajuste o tamanho conforme necessário */
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <img class="logo-VTM" src="/images/logo-vtm.svg" alt="Logo VTM" />
+    <img class="icon-user" src="/images/icon-user.svg" alt="Ícone do Usuário" />
+  </header>
+  
+  <!-- Botão de Voltar -->
+  <div class="back-button" onclick="window.history.back()">
+    <br>
+    <br>
+    <img src="/images/setaVoltar.png" alt="Voltar">
+  </div>
+    <br>
+    <br>
+  <div class="post-form">
+    <br>
+    <br>
+    <form id="jobPostForm" enctype="multipart/form-data" method="post" action="/jobs/create">
+      <input type="text" id="fantasyName" name="fantasyName" placeholder="Nome Fantasia" required />
+      <input id="volunteer-button" name="volunteer-button" placeholder="Descrição" maxlength="220" required/>
+      <input type="hidden" id="idPfp" name="idPfp" value="foto-de-perfil" />
+      <input type="text" id="tag" name="tag" placeholder="Tag (ex: Ambiental)" required />
+      <input type="file" id="image" name="image" accept="image/*" required />
+      <button type="submit">Postar</button>
+    </form>
+  </div>
+  
+  <footer class="footer">
+    <img class="bag" src="/images/bag-02.svg" alt="Ícone de Sacola" />
+    <img class="home-icon" src="/images/home-icon.svg" alt="Ícone de Home" />
+  </footer>
+
+  <script>
+    document.getElementById('jobPostForm').addEventListener('submit', async function(event) {
+      event.preventDefault();
+
+      const formData = new FormData(this);
+
+      console.log('Form Data being sent:');
+      for (let [key, value] of formData.entries()) {
+        console.log(key, value);
+      }
+
+      try {
+        const response = await fetch('/jobs/create', {
+          method: 'POST',
+          body: formData
+        });
+
+        if (response.ok) {
+          window.location.href = '/jobs'; // Redirect back to the feed page
+        } else {
+          const errorData = await response.json();
+          alert(`Erro ao criar a postagem: ${errorData.error}`);
+        }
+      } catch (error) {
+        console.error('Erro ao enviar o formulário:', error);
+        alert('Erro ao criar a postagem');
+      }
+    });
+  </script>
+</body>
+</html>

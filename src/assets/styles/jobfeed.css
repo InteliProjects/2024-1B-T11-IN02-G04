@@ -1,0 +1,307 @@
+/* Estilos globais */
+body {
+  font-family: "Segoe UI", Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #f4f4f4;
+  overflow-y: scroll; /* Garante que o body permita a rolagem vertical */
+}
+
+.description {
+  padding: 1% 2%;
+  font-size: 3vw;
+  background-color: #ef761e;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Cabeçalho */
+.header {
+  width: 100%;
+  background-color: #ef761e;
+  padding: 1%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  flex-direction: row;
+  top: 0;
+  z-index: 1000;
+  left: 0; /* Garante que o header preencha a largura total */
+}
+
+.header .logo-VTM {
+  height: 3vh;
+  margin-left: 5%; /* Ajusta a posição da logo um pouco para a direita */
+}
+
+.header .icon-user {
+  height: 3vh;
+  margin-right: 10%; /* Ajusta a posição do ícone um pouco para a esquerda */
+}
+
+/* Rodapé */
+.footer {
+  width: 100%;
+  background-color: #ef761e;
+  padding: 2%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center; /* Centraliza verticalmente os itens no footer */
+  position: fixed;
+  bottom: 0;
+  z-index: 1000;
+  left: 0; /* Garante que o footer preencha a largura total */
+}
+
+.footer .home-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center; /* Centraliza verticalmente a imagem dentro do botão */
+  justify-content: center;
+  position: relative; /* Define a posição como relativa para ajustar o topo */
+  top: -5px;
+  height: 3vh;
+  width: 3vh; 
+}
+
+.footer .bag {
+  height: 3vh;
+}
+
+.footer .home-icon {
+  height: 3vh;
+}
+
+/* Conteúdo do feed */
+.feed-container {
+  padding-top: 12%; /* Espaço para o cabeçalho fixo */
+  padding-left: 5%; /* Adiciona padding à esquerda */
+  padding-right: 5%; /* Adiciona padding à direita */
+  padding-bottom: 12%; /* Espaço para o rodapé fixo */
+  overflow-y: auto; /* Garante que o contêiner permita rolagem vertical */
+  box-sizing: border-box;
+}
+
+.feed {
+  background-color:  #dfdfdff4;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  margin-bottom: 2%;
+  padding: 2%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  text-align: center; /* Centraliza o texto e outros elementos */
+  box-sizing: border-box;
+  margin-top: 2%; /* Adiciona margem superior */
+}
+
+.feed .overlap-2 {
+  background-color: #ffffff;
+  padding: 2%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.feed .ranking {
+  width: 25%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.feed .post {
+  background-color: #ffffff00;
+  overflow: hidden;
+  width: 100%;
+  position: relative; 
+  margin-bottom: 2%;
+  padding: 2%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.feed .overlap-group {
+  position: relative;
+  width: 100%;
+  max-width: 100%; /* Garante que não ultrapasse os limites da borda */
+  background-color: #ffffff;
+  padding: 2%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin: 2% 0; /* Adiciona margem superior e inferior, centraliza horizontalmente */
+  margin-bottom: 4%; /* Adiciona margem inferior extra para espaçamento */
+  overflow: hidden; /* Garante que o conteúdo não ultrapasse o contêiner */
+  box-sizing: border-box; /* Inclui padding e bordas no cálculo da largura */
+}
+
+.feed .post-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1%;
+}
+
+.feed .foto-de-perfil {
+  width: 12%;
+  height: auto;
+  border-radius: 50%;
+  object-fit: cover;
+  float: left;
+  margin-right: 2%;
+}
+
+.feed .post-info {
+  flex: 1;
+}
+
+.feed .post-title {
+  font-weight: bold;
+  font-size: 4vw;
+}
+
+.feed .post-timestamp {
+  font-size: 2.5vw;
+  color: #999;
+}
+
+.feed .post-description {
+  font-size: 3vw;
+  color: #666;
+  margin: 2% 0;
+}
+
+.feed .imagem-post {
+  width: 100%;
+  height: auto;
+  max-width: 100%; /* Garante que a imagem não ultrapasse o contêiner */
+  margin-top: 2%;
+  border-radius: 8px;
+  display: block;
+}
+
+.feed .post-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2%;
+}
+
+.feed .post-tag {
+  font-size: 3vw;
+  color: #333;
+  margin-right: 2%;
+}
+
+.volunteer-button {
+  padding: 1% 2%;
+  font-size: 3vw;
+  background-color: #ef761e;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+input {
+  margin-top: 20px;
+  height: 20px;
+  padding: 15px;
+  border-radius: 20px;
+  border: none;
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+button {
+  background: rgba(239, 118, 30, 1);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 100%;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+.volunteer-button:hover {
+  background-color: #e65a00;
+}
+
+.menu-de-aes {
+  width: 4%;
+  height: auto;
+  cursor: pointer;
+}
+
+/* Media Queries para dispositivos móveis */
+@media (max-width: 768px) {
+  .feed-container {
+    padding-top: 12%; /* Espaço para o cabeçalho fixo */
+    padding-bottom: 12%; /* Espaço para o rodapé fixo */
+    padding-left: 5%; /* Adiciona padding à esquerda */
+    padding-right: 5%; /* Adiciona padding à direita */
+  }
+
+  .feed {
+    padding: 0;
+  }
+
+  .feed .post {
+    padding: 5%;
+    margin-bottom: 2%;
+    max-width: 100%; /* Garante que não ultrapasse os limites da borda */
+  }
+
+  .feed .overlap-group {
+    padding: 5%;
+    margin: 2% 0 4% 0; /* Adiciona margem superior e inferior */
+    max-width: 100%; /* Garante que o grupo não ultrapasse os limites em telas pequenas */
+  }
+
+  .feed .foto-de-perfil {
+    width: 15%;
+  }
+
+  .feed .post-title {
+    font-size: 5vw;
+  }
+
+  .feed .post-timestamp {
+    font-size: 3vw;
+  }
+
+  .feed .post-description {
+    font-size: 4vw;
+  }
+
+  .feed .post-tag {
+    font-size: 4vw;
+  }
+
+  .volunteer-button {
+    font-size: 4vw;
+  }
+
+  .menu-de-aes {
+    width: 6%;
+  }
+}

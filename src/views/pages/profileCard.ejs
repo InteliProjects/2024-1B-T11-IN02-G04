@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil de Voluntário</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/styles/profileCard.css" />
+  <link rel="stylesheet" href="https://kit.fontawesome.com/a076d05399.css">
+  <style>
+    .back-button {
+      position: absolute;
+      top: 20px;
+      left: 10px;
+      cursor: pointer;
+    }
+    .back-button img {
+      width: 24px; /* Ajuste o tamanho conforme necessário */
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <div class="card">
+      <div class="profile-header text-center">
+        <!-- Botão de Voltar -->
+        <div class="back-button" onclick="window.history.back()">
+          <img src="/images/setaVoltar.png" alt="Voltar">
+        </div>
+        <div id="profileImage" class="profile-image">
+          <img src="/images/8073da81-7d37-4d11-a5ed-7bc7a4dbc61d.png" alt="Profile Image" />
+        </div>
+        <div class="profile-info mt-3">
+          <div id="name" class="name"><%= name %></div>
+          <div id="title" class="title"><%= title %></div>
+        </div>
+        <div class="social-icons mt-3">
+          <div class="icon" aria-label="Facebook"><img src="/images/iconeFacebook.png" alt="Facebook"></div>
+          <div class="icon" aria-label="Instagram"><img src="/images/iconeInstagram.png" alt="Instagram"></div>
+          <div class="icon" aria-label="LinkedIn"><img src="/images/iconeLinkedin.png" alt="LinkedIn"></div>
+        </div>
+        <button class="btn btn-primary mt-3" data-toggle="modal" data-target="#editProfileModal">Editar Perfil</button>
+      </div>
+      <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="pessoal-tab" data-toggle="tab" href="#pessoal" role="tab" aria-controls="pessoal" aria-selected="true">Pessoal</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="estatisticas-tab" data-toggle="tab" href="#estatisticas" role="tab" aria-controls="estatisticas" aria-selected="false">Estatísticas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="posts-tab" data-toggle="tab" href="#posts" role="tab" aria-controls="posts" aria-selected="false">Posts</a>
+        </li>
+      </ul>
+      <div class="tab-content profile-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="pessoal" role="tabpanel" aria-labelledby="pessoal-tab">
+          <div class="profile-section">
+            <h3>Sobre mim:</h3>
+            <p id="about"><%= about %></p>
+          </div>
+          <div class="profile-section">
+            <h3>Info/Contato</h3>
+            <p><i class="fas fa-phone-alt"></i> <span id="phone"><%= phone %></span></p>
+            <p><i class="fas fa-envelope"></i> <span id="email"><%= email %></span></p>
+            <p><i class="fas fa-map-marker-alt"></i> <span id="location"><%= city %></span></p>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="estatisticas" role="tabpanel" aria-labelledby="estatisticas-tab">
+          <div class="profile-section habilidades-section">
+            <h3>Habilidades</h3>
+            <div class="skills" id="skills">
+              <% skills.forEach(function(skill) { %>
+                <div class="skill"><%= skill %></div>
+              <% }); %>
+            </div>
+          </div>
+          <div class="profile-section">
+            <h3>Horas trabalhadas</h3>
+            <div class="hours-worked">
+              <div id="workedHours" class="time"><%= workedHours %></div>
+              <div id="category" class="categories">
+                <% categories.forEach(function(category) { %>
+                  <div class="category"><%= category %></div>
+                <% }); %>
+              </div>
+            </div>
+          </div>
+          <div class="profile-section">
+            <h3>Conquistas</h3>
+            <div class="achievements" id="achievements">
+              <% achievements.forEach(function(achievement) { %>
+                <div class="achievement">
+                  <img src="<%= achievement.img %>" alt="Medal">
+                </div>
+              <% }); %>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="posts" role="tabpanel" aria-labelledby="posts-tab">
+          <div class="posts-container" id="postsContainer">
+            <% posts.forEach(function(post) { %>
+              <div class="post">
+                <img src="<%= post.image %>" alt="Post Image">
+                <h4><%= post.title %></h4>
+                <p><%= post.description %></p>
+                <div class="like-button" onclick="toggleLike(this)">
+                  <i class="far fa-heart"></i>
+                </div>
+              </div>
+            <% }); %>
+          </div>
+        </div>
+      </div>
+      <div class="profile-buttons">
+        <button class="btn">Adicionar</button>
+        <button class="btn">Mensagem</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para Editar Perfil -->
+  <div class="modal fade" id="editProfileModal" tabindex="-1" role="dialog" aria-labelledby="editProfileModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editProfileModalLabel">Editar Perfil</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="editProfileForm" enctype="multipart/form-data">
+            <div class="form-group">
+              <label for="name">Nome</label>
+              <input type="text" class="form-control" id="name" name="name" maxlength="14" value="<%= name %>">
+            </div>
+            <div class="form-group">
+              <label for="description">Descrição</label>
+              <textarea class="form-control" id="description" name="description" maxlength="220"><%= about %></textarea>
+            </div>
+            <div class="form-group">
+              <label for="profileImage">Foto de Perfil</label>
+              <input type="file" class="form-control-file" id="profileImage" name="profileImage">
+            </div>
+            <button type="submit" class="btn btn-primary">Salvar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    // Adicionar lógica de JavaScript para enviar o formulário
+    document.getElementById('editProfileForm').addEventListener('submit', async function(event) {
+      event.preventDefault();
+
+      const formData = new FormData(this);
+
+
+      const response = await fetch('/user/updateProfile', {
+        method: 'POST',
+        body: formData
+      });
+
+      if (response.ok) {
+        location.reload();
+      } else {
+        alert('Erro ao atualizar o perfil');
+      }
+    });
+  </script>
+</body>
+</html>

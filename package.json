@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "sails": "^1.5.11"
+  },
+  "devDependencies": {
+    "nyc": "^15.1.0"
+  }
+}

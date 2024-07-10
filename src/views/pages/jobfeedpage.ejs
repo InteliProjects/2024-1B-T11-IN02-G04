@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="/styles/jobfeed.css" />
+  <title>Feed de Vagas</title>
+</head>
+<style>
+  .back-button {
+     position: absolute;
+     top: 20px;
+     left: 10px;
+     cursor: pointer;
+   }
+
+   .back-button img {
+     width: 24px; /* Ajuste o tamanho conforme necessário */
+     height: 24px; /* Ajuste o tamanho conforme necessário */
+     margin-top: 20px;
+   }
+
+   .feed-container{
+     margin: 10px;
+   }
+</style>
+<body>
+  <header class="header">
+    <img class="logo-VTM" src="/images/logo-vtm.svg" alt="Logo VTM" />
+    <img id="perfil" class="icon-user" src="/images/icon-user.svg" alt="Ícone do Usuário" />
+  </header>
+
+  <div class="back-button" onclick="window.history.back()">
+    <br>
+    <img src="/images/setaVoltar.png" alt="Voltar">
+  </div>
+  
+  <br>
+  
+  <div class="feed-container">
+    <div class="feed">
+      <div class="rank">
+        <div class="overlap-2">
+          <p class="conhe-a-os-usu-rios">
+            <span class="text-wrapper-11">Encontre os trabalhos voluntários que mais combinam com você!</span>
+          </p>
+        </div>
+      </div>
+
+      <button id="postButton" class="new-post-button">Nova Postagem</button>
+      
+      <% jobPosts.forEach(function(post) { %>
+        <div class="post">
+          <div class="overlap-group">
+            <div class="post-header">
+              <img class="foto-de-perfil" src="/images/<%= post.idPfp %>.svg" alt="Foto de Perfil" />
+              <div class="post-info">
+                <h2 class="post-title"><%= post.fantasyName %></h2>
+                <p class="post-timestamp">Postado <%= new Date(post.timestamp).toLocaleString() %></p>
+              </div>
+            </div>
+            <p class="post-description"><%= post.description %></p>
+            <img class="imagem-post" src="/images/<%= post.imagePath %>" alt="Imagem do Post" />
+            <div class="post-footer">
+              <p class="post-tag">Tag: <%= post.tag %></p>
+              <button class="volunteer-button">Voluntariar-se</button>
+            </div>
+          </div>
+        </div>
+      <% }); %>
+    </div>
+  </div>
+  
+  <footer class="footer">
+    <img class="bag" src="/images/bag-02.svg" alt="Bag Icon" />
+    <button id="feedbutton" class="home-button">
+      <img class="home-icon" src="/images/home-icon.svg" alt="Home Icon" />
+    </button>
+  </footer>
+
+  <script>
+    document.getElementById('postButton').addEventListener('click', function() {
+      window.location.href = '/jobs/new';
+    });
+    document.getElementById('feedbutton').addEventListener('click', function() {
+      window.location.href = '/feed'; // Redirect to the feed page
+    });
+    document.getElementById('perfil').addEventListener('click', function() {
+      window.location.href = '/profileCard'; // Redirect to the feed page
+    });
+  
+  </script>
+</body>
+</html>

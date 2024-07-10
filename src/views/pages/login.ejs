@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+  <link rel="stylesheet" type="text/css" href="/styles/styles.css">
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+  <style>
+    .back-button {
+      position: absolute;
+      top: 20px;
+      left: 10px;
+      cursor: pointer;
+    }
+    .back-button img {
+      width: 24px; /* Ajuste o tamanho conforme necessário */
+      height: auto;
+    }
+    #login, #registerButton {
+      background-color: #ef761e; /* Cor de fundo */
+      color: white; /* Cor do texto */
+      border: none; /* Remove borda */
+      padding: 10px 20px; /* Espaçamento interno */
+      text-align: center; /* Alinhamento do texto */
+      text-decoration: none; /* Remove sublinhado */
+      display: inline-block; /* Necessário para padding funcionar corretamente */
+      font-size: 16px; /* Tamanho da fonte */
+      margin: 4px 2px; /* Margem */
+      cursor: pointer; /* Cursor de mãozinha */
+      border-radius: 10px; /* Arredondamento dos cantos */
+    }
+    #login:hover, #registerButton:hover {
+      background-color: #e05d1e; /* Cor de fundo ao passar o mouse */
+    }
+  </style>
+</head>
+<body id="lr">
+  <!-- Botão de Voltar -->
+  <div class="back-button" onclick="window.history.back()">
+    <img src="/images/setaVoltar.png" alt="Voltar">
+  </div>
+  
+  <div class="container">
+    <h1>Login</h1>
+    <% if (typeof error !== 'undefined') { %>
+      <div class="error"><%= error %></div>
+    <% } %>
+    
+    <form action="/login" method="POST">
+      <label for="username">Nome de Usuário:</label>
+      <input type="text" id="username" name="username" required>
+      <br>
+      <label for="password">Senha:</label>
+      <input type="password" id="password" name="password" required>
+      <br>
+      <button id="login" type="submit">Login</button>
+      <br><br>
+      <button id="registerButton">Cadastro</button>
+    </form>
+  </div>
+  
+  <script>
+    document.getElementById('registerButton').addEventListener('click', function(event) {
+      event.preventDefault(); // Previne o comportamento padrão do botão dentro do formulário
+      window.location.href = '/register';
+    });
+
+    document.getElementById('login').addEventListener('click', function() {
+      window.location.href = '/vmatch'; // Redirect to the jobs page
+    });
+  </script>
+</body>
+</html>

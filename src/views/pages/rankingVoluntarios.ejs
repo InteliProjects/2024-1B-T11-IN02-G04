@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ranking de Voluntários</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #FAFCFF;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 452px;
+      height: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+      overflow-y: auto;
+    }
+
+    .ranking-container {
+      width: 100%;
+      background: #ffffff;
+      border-radius: 25.58px;
+      overflow: hidden;
+      margin: 0 auto;
+    }
+
+    .header {
+      width: 100%;
+      padding: 15.07px 20.09px;
+      background: #EF761E;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12.56px;
+      position: relative; /* Adicionado para posicionar o botão de voltar */
+    }
+
+    .header .title {
+      color: #FAFAFA;
+      font-size: 22.60px;
+      font-weight: 400;
+      line-height: 29.38px;
+      text-align: center;
+    }
+
+    .tab-container {
+      width: 100%;
+      height: 60.27px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 30px;
+      gap: 10px; /* Add spacing between buttons */
+    }
+
+    .tab {
+      width: 110px; /* Adjusted width */
+      height: 50.22px;
+      background: #EF761E;
+      border-radius: 10.04px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 15.07px;
+      font-weight: 400;
+    }
+
+    .tab.inactive {
+      background: #A9A9A9;
+    }
+
+    .tab.active {
+      background: #EF761E;
+    }
+
+    .ranking-list {
+      width: 100%;
+      height: calc(100% - 530px);
+      overflow-y: scroll;
+      -ms-overflow-style: none;  /* Internet Explorer 10+ */
+      scrollbar-width: none;  /* Firefox */
+    }
+
+    .ranking-list::-webkit-scrollbar { 
+      display: none;  /* Safari and Chrome */
+    }
+
+    .ranking-item {
+      width: calc(100% - 20px);
+      height: 89.14px;
+      padding: 20.09px 21.26px;
+      margin: 10px auto;
+      background: #A9A9A9; /* Cor cinza para os outros cards */
+      border-radius: 20.09px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .ranking-item.highlight {
+      background: #EF761E; /* Cor laranja para o card "You" */
+    }
+
+    .ranking-item img {
+      width: 55.24px;
+      height: 55.24px;
+      border-radius: 62.78px;
+      margin-right: 15px;
+    }
+
+    .ranking-item .info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .ranking-item .info .name {
+      color: #FAFCFF;
+      font-size: 17.58px;
+      font-weight: 600;
+      line-height: 26.37px;
+    }
+
+    .ranking-item .info .points {
+      color: rgba(240.12, 239.12, 239.12, 0.77);
+      font-size: 15.07px;
+      font-weight: 500;
+      text-transform: capitalize;
+      line-height: 22.60px;
+    }
+
+    .ranking-item .rank {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .ranking-item .rank .number {
+      color: #FAFCFF;
+      font-size: 15.07px;
+      font-weight: 500;
+      text-transform: capitalize;
+      line-height: 22.60px;
+    }
+
+    .top-rankings {
+      width: 100%;
+      max-width: 411.82px;
+      height: 263.67px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .top-rank {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .top-rank img {
+      border-radius: 9999px;
+    }
+
+    .top-rank .position {
+      position: absolute;
+      width: 21.34px;
+      height: 21.34px;
+      transform: rotate(45deg);
+      border-radius: 6.28px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 10.04px;
+      font-family: Inter;
+      font-weight: 600;
+    }
+
+    .top-rank .position span {
+      transform: rotate(-45deg);
+    }
+
+    .top-rank .info {
+      text-align: center;
+      color: white;
+      font-size: 15.07px;
+      font-weight: 300;
+    }
+
+    .top-rank .info .hours {
+      color: #BF88EC;
+      font-size: 18.83px;
+      font-weight: 700;
+    }
+
+    .back-button {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      cursor: pointer;
+    }
+    .back-button img {
+      width: 24px; /* Ajuste o tamanho conforme necessário */
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="ranking-container">
+      <div class="header">
+        <!-- Botão de Voltar -->
+        <div class="back-button" onclick="window.history.back()">
+          <img src="/images/setaVoltar.png" alt="Voltar">
+        </div>
+        <div class="title">Ranking de Voluntários</div>
+      </div>
+      <div class="tab-container">
+        <div class="tab inactive" onclick="showRanking('daily')">Diário</div>
+        <div class="tab inactive" onclick="showRanking('weekly')">Semanal</div>
+        <div class="tab active" onclick="showRanking('monthly')">Mensal</div>
+      </div>
+      
+      <div class="top-rankings">
+        <div class="top-rank">
+          <img src="https://via.placeholder.com/85x85" alt="Maria" style="border: 3.77px #F79D81 solid; width: 85.38px; height: 85.38px;">
+          <div class="position" style="background: linear-gradient(180deg, #F79E81 0%, #C24967 100%); top: 65px; left: 32px;">
+            <span>2</span>
+          </div>
+          <div class="info">
+            <div>Maria</div>
+            <div class="hours" style="color: #C44C68;">75h</div>
+          </div>
+        </div>
+        <div class="top-rank" style="margin-top: -35px;">
+          <img src="https://via.placeholder.com/103x103" alt="Rachel" style="border: 3.77px #6E69F7 solid; width: 102.96px; height: 102.96px;">
+          <div class="position" style="background: linear-gradient(180deg, #6A68F7 0%, #DC93E8 100%); top: 85px; left: 42px;">
+            <span>1</span>
+          </div>
+          <div class="info">
+            <div>Rachel</div>
+            <div class="hours" style="color: #BF88EC;">120h</div>
+          </div>
+        </div>
+        <div class="top-rank">
+          <img src="https://via.placeholder.com/85x85" alt="Andrew" style="border: 3.77px #FBB45B solid; width: 85.38px; height: 85.38px;">
+          <div class="position" style="background: linear-gradient(180deg, #FAAF58 0%, #E55D24 100%); top: 65px; left: 32px;">
+            <span>3</span>
+          </div>
+          <div class="info">
+            <div>Andrew</div>
+            <div class="hours" style="color: #EC7735;">100h</div>
+          </div>
+        </div>
+      </div>
+      <div class="ranking-list">
+        <div class="ranking-item highlight">
+          <img src="https://via.placeholder.com/55x55" alt="You">
+          <div class="info">
+            <div class="name">You</div>
+            <div class="points">30h</div>
+          </div>
+          <div class="rank">
+            <div class="number">4</div>
+          </div>
+        </div>
+        <div class="ranking-item">
+          <img src="https://via.placeholder.com/55x55" alt="Martha Anderson">
+          <div class="info">
+            <div class="name">Martha Anderson</div>
+            <div class="points">80h</div>
+          </div>
+          <div class="rank">
+            <div class="number">5</div>
+          </div>
+        </div>
+        <div class="ranking-item">
+          <img src="https://via.placeholder.com/55x55" alt="Julia Clover">
+          <div class="info">
+            <div class="name">Julia Clover</div>
+            <div class="points">50h</div>
+          </div>
+          <div class="rank">
+            <div class="number">6</div>
+          </div>
+        </div>
+        <div class="ranking-item">
+          <img src="https://via.placeholder.com/55x55" alt="Carrie Henderson">
+          <div class="info">
+            <div class="name">Carrie Henderson</div>
+            <div class="points">40h</div>
+          </div>
+          <div class="rank">
+            <div class="number">7</div>
+          </div>
+        </div>
+        <div class="ranking-item">
+          <img src="https://via.placeholder.com/55x55" alt="Anastasia">
+          <div class="info">
+            <div class="name">Anastasia</div>
+            <div class="points">30h</div>
+          </div>
+          <div class="rank">
+            <div class="number">8</div>
+          </div>
+        </div>
+        <div class="ranking-item">
+          <img src="https://via.placeholder.com/55x55" alt="Michael Johnson">
+          <div class="info">
+            <div class="name">Michael Johnson</div>
+            <div class="points">20h</div>
+          </div>
+          <div class="rank">
+            <div class="number">9</div>
+          </div>
+        </div>
+        <div class="ranking-item">
+          <img src="https://via.placeholder.com/55x55" alt="Emily Clark">
+          <div class="info">
+            <div class="name">Emily Clark</div>
+            <div class="points">10h</div>
+          </div>
+          <div class="rank">
+            <div class="number">10</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

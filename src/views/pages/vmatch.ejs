@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vmatch Card</title>
+    <link rel="stylesheet" href="styles/vmatch.css">
+</head>
+<body>
+    <div class="Vmatch">
+        <div class="Card">
+            <img src="/images/images.webp" class="Banner" id="Banner" />
+            <div class="Name" id="Name">Entrega de chocolates na páscoa></div>
+            <div class="Location" id="location">Situada em São Paulo></div>
+            <div class="Distance" id="distance">5 km de distância></div>
+        </div>
+        <div class="Botoesvmatch">
+            <div id="dislike" class="Dislike">
+                <div class="X"></div>
+            </div>
+            <div id="message" class="Message">
+                <div class="Icon"></div>
+            </div>
+            <div id="like" class="Like">
+                <div class="Heart"></div>
+            </div>
+        </div>
+        <div id="sliderwrapper">
+            <link rel="stylesheet" type="text/css" href="styles/feed.css">
+        </div>
+        <div class="back-button" onclick="window.history.back()">
+        <div class="Vector"></div></div>
+        <img class="Logovtm" src="/images/VTM.png" />
+    </div>
+    <br>
+    <footer class="footer">
+        <button id="jobbutton" class="volunteer-button">
+            <img class="bag" src="/images/bag-02.svg" alt="Bag Icon" />
+        </button>
+        <button id="feedbutton" class="home-button">
+            <img class="home-icon" src="/images/home-icon.svg" alt="Home Icon" />
+        </button>
+    </footer>
+</body>
+    <script>
+            async function handleInteraction(voluntariadoId, action) {
+      const response = await fetch(`/vmatch/${action}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ voluntariadoId })
+      });
+
+      if (response.ok) {
+        // Atualize a visualização para mostrar o próximo voluntariado
+        location.reload();
+      } else {
+        alert('Houve um erro ao processar sua solicitação.');
+      }
+    }
+    </script>
+</html>

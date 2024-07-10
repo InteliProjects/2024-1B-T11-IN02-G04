@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="/styles/jobfeed.css" />
+  <style>
+    .back-button {
+      position: absolute;
+      top: 20px;
+      left: 10px;
+      cursor: pointer;
+    }
+    .back-button img {
+      width: 24px; /* Ajuste o tamanho conforme necessário */
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <img class="logo-VTM" src="/images/logo-vtm.svg" alt="Logo VTM" />
+    <img class="icon-user" src="/images/icon-user.svg" alt="Ícone do Usuário" />
+  </header>
+  <br>
+  <!-- Botão de Voltar -->
+  <div class="back-button" onclick="window.history.back()">
+    <br>
+    <br>
+    <img src="/images/setaVoltar.png" alt="Voltar">
+  </div>
+    <br>
+    <br>
+  <div class="post-form">
+    <br>
+    <form id="postForm" enctype="multipart/form-data">
+      <input type="title" id="title" name="title" placeholder="Título" required />
+      <input type="text" id="fantasyName" name="fantasyName" placeholder="Nome Fantasia" required />
+      <input id="description" name="description" placeholder="Descrição" maxlength="220" required/>
+      <input type="hidden" id="idPfp" name="idPfp" value="foto-de-perfil" />
+      <input type="file" id="image" name="image" accept="image/*" required />
+      <button type="submit">Postar</button>
+    </form>
+  </div>
+  
+  <footer class="footer">
+    <img class="bag" src="/images/bag-02.svg" alt="Ícone de Sacola" />
+    <img class="home-icon" src="/images/home-icon.svg" alt="Ícone de Home" />
+  </footer>
+
+  <script>
+document.getElementById('postForm').addEventListener('submit', async function(event) {
+  event.preventDefault();
+
+  const title = document.getElementById('title').value;
+  const fantasyName = document.getElementById('fantasyName').value;
+  const description = document.getElementById('description').value;
+  const idPfp = document.getElementById('idPfp').value;
+  const image = document.getElementById('image').files[0];
+
+  // Verificar se a imagem foi selecionada
+  if (!image) {
+    alert('Por favor, selecione uma imagem para upload.');
+    return;
+  }
+
+  const formData = new FormData();
+  formData.append('title', title);
+  formData.append('fantasyName', fantasyName);
+  formData.append('description', description);
+  formData.append('idPfp', idPfp);
+  formData.append('image', image);
+  
+  try {
+    const response = await fetch('/feed/create', {
+      method: 'POST',
+      body: formData
+    });
+
+    if (response.ok) {
+      window.location.href = '/feed'; // Redirect back to the feed page
+    } else {
+      alert('Erro ao criar a postagem');
+    }
+  } catch (error) {
+    alert('Erro ao criar a postagem');
+  }
+});
+  </script>
+</body>
+</html>

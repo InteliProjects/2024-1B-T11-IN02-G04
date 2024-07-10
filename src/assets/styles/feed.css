@@ -1,0 +1,336 @@
+/* Estilos globais */
+body {
+  font-family: "Segoe UI", Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #f4f4f4;
+  overflow-y: scroll; /* Garante que o body permita a rolagem vertical */
+}
+
+.float-btn { 
+  position: fixed; 
+  bottom: 20px; 
+  left: 50%; 
+  transform: translateX(-50%); 
+  background-color: #ef761e; 
+  color: white; 
+  border: none; 
+  border-radius: 50%; 
+  width: 60px; 
+  height: 60px; 
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); 
+  font-size: 16px; 
+  cursor: pointer; 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  text-align: center; 
+  padding: 35 px;
+}
+
+/* Cabeçalho */
+.header {
+  width: 100%;
+  background-color: #ef761e;
+  padding: 1%;
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  left: 0; /* Garante que o header preencha a largura total */
+}
+
+.header .logo-VTM {
+  height: 3vh;
+  margin-left: 5%; /* Ajusta a posição da logo um pouco para a direita */
+}
+
+.header .icon-user {
+  height: 3vh;
+  margin-right: 10%; /* Ajusta a posição do ícone um pouco para a esquerda */
+}
+
+/* Rodapé */
+.footer {
+  width: 100%;
+  background-color: #ef761e;
+  padding: 2%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center; /* Centraliza verticalmente os itens no footer */
+  position: fixed;
+  bottom: 0;
+  z-index: 1000;
+  left: 0; /* Garante que o footer preencha a largura total */
+}
+
+.footer .bag-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center; /* Centraliza verticalmente a imagem dentro do botão */
+  justify-content: center;
+  position: relative; /* Define a posição como relativa para ajustar o topo */
+  top: -5px;
+  height: 3vh;
+  width: 3vh; 
+}
+
+.footer .bag {
+  height: 3vh; /* Garante que a imagem tenha a mesma altura dos ícones */
+}
+
+.footer .home-icon {
+  height: 3vh;
+}
+
+
+/* Conteúdo do feed */
+.feed-container {
+  padding-top: 12%; /* Espaço para o cabeçalho fixo */
+  padding-left: 5%; /* Adiciona padding à esquerda */
+  padding-right: 5%; /* Adiciona padding à direita */
+  padding-bottom: 12%; /* Espaço para o rodapé fixo */
+  overflow-y: auto; /* Garante que o contêiner permita rolagem vertical */
+  box-sizing: border-box;
+}
+
+.feed {
+  background-color: #ffffff00;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto; /* Centraliza a feed na página */
+  padding: 2%; /* Adiciona padding interno */
+  overflow: hidden; /* Evita que o conteúdo exceda a largura */
+  box-sizing: border-box;
+}
+
+.feed .div {
+  background-color:  #dfdfdff4;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  margin-bottom: 2%;
+  padding: 2%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  text-align: center; /* Centraliza o texto e outros elementos */
+  box-sizing: border-box;
+  margin-top: 2%; /* Adiciona margem superior */
+}
+
+.feed .posts {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.feed .post {
+  width: 100%;
+  margin-bottom: 2%;
+  box-sizing: border-box;
+}
+
+.feed .overlap-group {
+  position: relative;
+  width: 100%;
+  max-width: 100%; /* Garante que não ultrapasse os limites da borda */
+  background-color: #ffffff;
+  padding: 2%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin: 2% 0; /* Adiciona margem superior e inferior, centraliza horizontalmente */
+  margin-bottom: 4%; /* Adiciona margem inferior extra para espaçamento */
+  overflow: hidden; /* Garante que o conteúdo não ultrapasse o contêiner */
+  box-sizing: border-box; /* Inclui padding e bordas no cálculo da largura */
+}
+
+.feed .foto-de-perfil {
+  width: 12%;
+  height: auto;
+  border-radius: 50%;
+  object-fit: cover;
+  float: left;
+  margin-right: 2%;
+}
+
+.feed .text-wrapper,
+.feed .text-wrapper-2,
+.feed .text-wrapper-6 {
+  font-weight: bold;
+  font-size: 4vw;
+  margin-top: 2%;
+  text-align: left;
+}
+
+.feed .p,
+.feed .text-wrapper-3,
+.feed .text-wrapper-7,
+.feed .text-wrapper-9 {
+  font-size: 3vw;
+  color: #666;
+  margin-top: 1%;
+  text-align: left;
+}
+
+.feed .postado-hora-atr-s,
+.feed .text-wrapper-4,
+.feed .postado-hora-atr-s-2,
+.feed .text-wrapper-10 {
+  font-size: 2.5vw;
+  color: #999;
+  margin-top: 1%;
+  text-align: left;
+}
+
+.feed .imagem-post {
+  width: 100%;
+  height: auto;
+  max-width: 100%; /* Garante que a imagem não ultrapasse o contêiner */
+  margin-top: 2%;
+  border-radius: 8px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.feed .interaction-icons {
+  display: flex;
+  justify-content: flex-start;
+  gap: 2%; /* Adicionei gap para espaçamento entre os ícones */
+  width: 100%;
+  padding: 2%;
+}
+
+.feed .interaction-icons img {
+  width: 6%;
+  height: auto;
+}
+
+.feed .pontos-imagens-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2%;
+}
+
+.feed .pontos-imagens {
+  width: 6%;
+  height: auto;
+}
+
+.feed .lorem-ipsum-dolor,
+.feed .text-wrapper-8 {
+  font-size: 4vw;
+  color: #333;
+  margin-top: 2%;
+  text-align: left;
+}
+
+.feed .rank {
+  width: 100%;
+  margin: 4% 0;
+}
+
+.feed .overlap-2 {
+  background-color: #ffffff;
+  padding: 2%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.feed .ranking {
+  width: 25%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.feed .conhe-a-os-usu-rios {
+  font-size: 5vw;
+  text-align: center;
+  margin-top: 4%;
+}
+
+#postButton {
+  margin: 2% 0; /* Margem superior e inferior para separação */
+  padding: 1% 2%;
+  font-size: 3vw;
+  background-color: #ef761e;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#postButton:hover {
+  background-color: #e65a00;
+}
+
+/* Menu de ações */
+.menu-de-aes {
+  position: absolute;
+  top: 5%; /* Utilizando % para manter consistência */
+  right: 2%; /* Utilizando % para manter consistência */
+  width: 4%; /* Ajusta o tamanho do botão */
+  height: auto;
+  cursor: pointer;
+}
+
+/* Media Queries para dispositivos móveis */
+@media (max-width: 768px) {
+  .feed-container {
+    padding-top: 12%; /* Espaço para o cabeçalho fixo */
+    padding-bottom: 12%; /* Espaço para o rodapé fixo */
+    padding-left: 5%; /* Adiciona padding à esquerda */
+    padding-right: 5%; /* Adiciona padding à direita */
+  }
+
+  .feed {
+    padding: 0;
+  }
+
+  .feed .div {
+    width: 100%;
+    margin-bottom: 2%;
+    margin-top: 2%; /* Adiciona margem superior */
+  }
+
+  .feed .overlap-group {
+    padding: 5%;
+    margin: 2% 0 4% 0; /* Adiciona margem superior e inferior */
+    max-width: 100%; /* Garante que o grupo não ultrapasse os limites em telas pequenas */
+  }
+
+  .feed .imagem-post {
+    max-width: 100%; /* Garante que a imagem não ultrapasse os limites do contêiner em dispositivos móveis */
+  }
+
+  .feed .lorem-ipsum-dolor,
+  .feed .text-wrapper-8 {
+    font-size: 5vw;
+  }
+
+  .feed .conhe-a-os-usu-rios {
+    font-size: 6vw;
+  }
+
+  #postButton {
+    font-size: 4vw;
+    width: 90%; /* Ajusta a largura do botão em telas menores */
+    margin: 2% auto; /* Centraliza o botão horizontalmente e adiciona margem superior e inferior */
+  }
+
+  .menu-de-aes {
+    width: 6%; /* Ajusta o tamanho do botão de ações em telas menores */
+    top: 5%; /* Utilizando % para manter consistência */
+    right: 2%; /* Utilizando % para manter consistência */
+  }
+}

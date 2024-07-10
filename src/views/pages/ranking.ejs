@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+  <link rel="stylesheet" type="text/css" href="/styles/ranking.css">
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .back-button {
+      position: absolute;
+      top: 20px;
+      left: 10px;
+      cursor: pointer;
+    }
+    .back-button img {
+      width: 24px;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <!-- Botão de Voltar -->
+  <div class="back-button" onclick="window.history.back()">
+    <img src="/images/setaVoltar.png" alt="Voltar">
+  </div>
+  
+  <div class="container">
+    <header class="header">
+      <img src="/images/logo-vtm.svg" alt="VTM Logo" class="logo">
+      <h1>Ranking</h1>
+      <p>Veja os perfis dos usuários com mais horas de voluntariado.</p>
+    </header>
+    <% if (typeof error !== 'undefined') { %>
+      <div class="error"><%= error %></div>
+    <% } %>
+    <div class="table-container">
+      <table class="ranking-table">
+        <thead>
+          <tr>
+            <th>Posição</th>
+            <th>Usuário</th>
+            <th>Horas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (users && users.length) { %>
+            <% users.forEach(function(user, index) { %>
+              <tr>
+                <td><%= index + 1 %></td>
+                <td><%= user.username %></td>
+                <td><%= user.work_hours %></td>
+              </tr>
+            <% }); %>
+          <% } else { %>
+            <tr>
+              <td colspan="3">Nenhum usuário encontrado.</td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+    <button class="back-btn" onclick="location.href='/landing'">Voltar</button>
+  </div>
+</body>
+</html>

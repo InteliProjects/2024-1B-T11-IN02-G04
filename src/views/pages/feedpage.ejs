@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="/styles/feed.css" />
+  <title>Feed</title>
+</head>
+<style>
+   .back-button {
+      position: absolute;
+      top: 20px;
+      left: 10px;
+      cursor: pointer;
+    }
+
+    .back-button img {
+      width: 24px; /* Ajuste o tamanho conforme necessário */
+      height: 24px; /* Ajuste o tamanho conforme necessário */
+      margin-top: 20px;
+    }
+
+    .feed-container{
+      margin: 10px;
+    }
+</style>
+<body>
+  <header class="header">
+    <img id="logo" class="logo-VTM" src="/images/logo-vtm.svg" />
+    <img id="perfil" class="icon-user" src="/images/icon-user.svg" />
+  </header>
+  <!-- Botão de Voltar -->
+  <div class="back-button" onclick="window.history.back()">
+    <br>
+    <img src="/images/setaVoltar.png" alt="Voltar">
+  </div>
+  
+  <br>
+  <div class="feed-container">
+    <div class="feed">
+      <h2>Olá, <%= username %>!</h2>
+      <div class="div">
+        <div class="overlap">
+          <div class="rank">
+            <div id="ranking" class="overlap-2">
+              <img class="ranking" src="/images/starTrophy.svg" />
+              <p class="conhe-a-os-usu-rios">
+                <span class="text-wrapper-11">Conheça os usuários que<br/>mais dedicaram tempo</span>
+              </p>
+            </div>
+          </div>
+          
+          <button id="postButton" class="new-post-button">Nova Postagem</button>
+          
+          <div class="posts">
+            <% posts.forEach(function(post) { %>
+              <div class="post">
+                <div class="overlap-group">
+                  <img class="foto-de-perfil" src="/images/<%= post.idPfp %>.svg" />
+                  <div class="text-wrapper"><%= post.username %></div>
+                  <p class="p"><%= post.description %></p>
+                  <div class="postado-hora-atr-s">Postado&nbsp;&nbsp;<%= new Date(post.timestamp).toLocaleString() %></div>
+                  <img class="imagem-post" src="/images/<%= post.imagePath %>" />
+                  <div class="pontos-imagens-container">
+                    <img class="pontos-imagens" src="/images/image-points.svg" />
+                  </div>
+                  <div class="interaction-icons">
+                    <img class="curtir" src="/images/icon-thumbs-up.svg" />
+                    <img class="comentrios" src="/images/icon-message-text.svg" />
+                    <img class="compartilhar" src="/images/send.svg" />
+                  </div>
+                </div>
+              </div>
+            <% }); %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <footer class="footer">
+    <button id="jobsButton" class="bag-button">
+      <img class="bag" src="/images/bag-02.svg" />
+    </button>
+    <img class="home-icon" src="/images/home-icon.svg" />
+  </footer>
+  
+  <script>
+    document.getElementById('postButton').addEventListener('click', function() {
+      window.location.href = '/feed/new'; // Redirect to the new post page
+    });
+
+    document.getElementById('logo').addEventListener('click', function() {
+      window.location.href = '/landing'; // Redirect to the landing page
+    });
+  
+    document.getElementById('jobsButton').addEventListener('click', function() {
+      window.location.href = '/jobs'; // Redirect to the jobs page
+    });
+
+    document.getElementById('perfil').addEventListener('click', function() {
+      window.location.href = '/profileCard'; // Redirect to the profile page
+    });
+
+    document.getElementById('ranking').addEventListener('click', function() {
+      window.location.href = '/ranking'; // Redirect to the ranking page
+    });
+
+  </script>
+</body>
+</html>

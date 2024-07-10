@@ -1,0 +1,290 @@
+.Vmatch {
+    width: 90%;
+    max-width: 390px;
+    height: 90%;
+    max-height: 844px;
+    position: relative;
+    background: white;
+    border-radius: 20px;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Segoe UI", Helvetica, sans-serif;
+    box-sizing: border-box;
+    background-color: #f4f4f4;
+    overflow-y: scroll; /* Garante que o body permita a rolagem vertical */
+}
+
+.Card {
+    width: 95%;
+    height: 81%;
+    left: 2.5%;
+    top: 10%;
+    position: absolute;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.64) 100%);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 11px;
+    overflow: hidden;
+}
+
+.Banner {
+    width: 180%;
+    height: auto;
+    left: -40%;
+    top: -20%;
+    position: absolute;
+}
+
+.Name {
+    width: auto;
+    height: auto;
+    left: 3%;
+    top: 60%;
+    position: absolute;
+    color: #FDFDFD;
+    font-size: 4vw;
+    font-family: Mulish;
+    font-weight: 700;
+    line-height: 1.2;
+    word-wrap: break-word;
+}
+
+.Location {
+    width: 65%;
+    height: auto;
+    left: 3%;
+    top: 65%;
+    position: absolute;
+    color: #FDFDFD;
+    font-size: 2.5vw;
+    font-family: Mulish;
+    font-weight: 400;
+    line-height: 1.2;
+    word-wrap: break-word;
+}
+
+.Distance {
+    width: 60%;
+    height: auto;
+    left: 3%;
+    top: 70%;
+    position: absolute;
+    color: #FDFDFD;
+    font-size: 2.5vw;
+    font-family: Mulish;
+    font-weight: 400;
+    line-height: 1.2;
+    word-wrap: break-word;
+}
+
+.Botoesvmatch {
+    width: 54%;
+    height: 7%;
+    left: 23%;
+    top: 82%;
+    position: absolute;
+}
+
+.Dislike {
+    width: 28%;
+    height: 100%;
+    position: absolute;
+    background: rgba(255, 255, 255, 0);
+}
+
+.Dislike .Circle {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: rgba(255, 255, 255, 0);
+    box-shadow: 0px 1px 7px rgba(0, 0, 0, 0.16);
+    border-radius: 9999px;
+    border: 2px #F24C65 solid;
+}
+
+.Dislike .X {
+    width: 125%;
+    height: 125%;
+    left: -80%;
+    position: absolute;
+    background: url('/images/dislike.svg') no-repeat center center;
+    background-size: contain;
+}
+
+.Message {
+    width: 25%;
+    height: 80%;
+    left: 64%;
+    top: 10%;
+    position: absolute;
+    background: rgba(255, 255, 255, 0);
+}
+
+.Message .Circle {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform: rotate(180deg);
+    transform-origin: 0 0;
+    background: rgba(255, 255, 255, 0);
+    box-shadow: 0px 1px 7px rgba(0, 0, 0, 0.16);
+    border-radius: 9999px;
+    border: 2px #27AAE4 solid;
+}
+
+.Message .Icon {
+    width: 125%;
+    height: 125%;
+    left: -120%;
+    position: absolute;
+    background: url('/images/message.svg') no-repeat center center;
+    background-size: contain;
+}
+
+.Like {
+    width: 28%;
+    height: 100%;
+    left: 72%;
+    top: 0%;
+    position: absolute;
+    background: rgba(255, 255, 255, 0);
+}
+
+.Like .Circle {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: rgba(255, 255, 255, 0);
+    box-shadow: 0px 1px 7px rgba(0, 0, 0, 0.16);
+    border-radius: 9999px;
+    border: 2px #F2B721 solid;
+}
+
+.Like .Heart {
+    width: 125%;
+    height: 125%;
+    left: 60%;
+    position: absolute;
+    background: url('/images/like.svg') no-repeat center center;
+    background-size: contain;
+}
+
+.Feed {
+    width: 100%;
+    height: 6.5%;
+    position: absolute;
+    top: 93%;
+}
+
+.LowerBar {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: #EF761E;
+    border-top-left-radius: 19px;
+    border-top-right-radius: 19px;
+    border: 0.20px #808080 solid;
+}
+
+.Bag02 {
+    width: 6.4%;
+    height: 5.3%;
+    left: 70.8%;
+    top: 23%;
+    position: absolute;
+    border-top-left-radius: 19px;
+    border-top-right-radius: 19px;
+}
+
+.Bag02 .Icon {
+    width: 70%;
+    height: 80%;
+    left: 15%;
+    top: 10%;
+    position: absolute;
+    border: 1.50px white solid;
+}
+
+.Line4 {
+    width: 56px;
+    height: 0px;
+    left: 200.80px;
+    top: 0px;
+    position: absolute;
+    transform: rotate(90deg);
+    transform-origin: 0 0;
+    background: #EF761E;
+    border: 0.50px white solid;
+}
+
+.Vector {
+    width: 4.3%;
+    height: 4.3%;
+    left: 10.8%;
+    top: 3%;
+    position: absolute;
+    background: url('/images/backicon.svg') no-repeat center center;
+    background-size: contain;
+    border: 1.50px white solid;
+}
+
+.Vector:nth-of-type(2) {
+    width: 20px;
+    height: 10px;
+    left: 27px;
+    top: 48px;
+    position: absolute;
+    transform: rotate(-90deg);
+    transform-origin: 0 0;
+    border: 1px black solid;
+}
+
+.Logovtm {
+    width: 22%;
+    height: auto;
+    left: 75%;
+    top: 3.3%;
+    position: absolute;
+}
+
+.volunteer-button {
+    padding: 1% 2%;
+    font-size: 3vw;
+    background-color: #ef761e;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .volunteer-button:hover {
+    background-color: #e65a00;
+  }
+
+  .home-button:hover {
+    background-color: #e65a00;
+  }
+  
+  .footer .home-button {
+    padding: 1% 2%; 
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center; /* Centraliza verticalmente a imagem dentro do botão */
+    justify-content: center;
+    position: relative; /* Define a posição como relativa para ajustar o topo */
+    top: -5px;
+    height: 3vh;
+    width: 3vh; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
